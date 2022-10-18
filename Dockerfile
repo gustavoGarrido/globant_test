@@ -1,19 +1,19 @@
-FROM node:16.15.1
+FROM python:3.8.10
 
 
 COPY . /app
 
 WORKDIR /app
 
-RUN rm -rf node_modules 
+# RUN rm -rf node_modules 
 
-RUN npm install
-RUN npm install -g nodemon
-RUN npm install pm2 -g
-RUN npm install -g typescript
-RUN tsc
+# RUN npm install
+# RUN npm install -g nodemon
+# RUN npm install pm2 -g
+# RUN npm install -g typescript
+# RUN tsc
 
-CMD pm2-runtime start config_pm2.json --env production
+# CMD pm2-runtime start config_pm2.json --env production
 # CMD pm2 start config_pm2.json --env production
 # CMD npm run dev
 
