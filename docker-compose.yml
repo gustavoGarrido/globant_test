@@ -1,0 +1,32 @@
+version: "2.2"
+
+services:
+  etl-app:
+    build: .
+    container_name: 'etl-app'
+    environment:
+      - PGPORT=15432
+      - PGHOST=db
+    depends_on:
+      - db
+    ports:
+      - 3500:3500
+      - 8080:8080
+  
+  db:
+    image: postgres
+    restart: on-failure
+    container_name: 'db'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=myglobantpass
+    command: -p 15432
+    ports:
+      - 15432:15432
+    # volumes: 
+    #       # copy the sql script to create tables
+    #   - ./init_db.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    # ports:
+    #   - 5431:5432
+    # expose:
+    #   - 5432
