@@ -1,5 +1,14 @@
-# up local enviroment
+# BUILD AND UP
+docker-compose buid
+docker-compose up
 
-uvicorn main:app --host 0.0.0.0 --port 80 --reload 
+# USAGE IN DEV ENVIROMENT
 
-https://www.neoguias.com/como-conectarse-postgresql-python/
+open the url localhost:80/docs
+send a request indicating the table name and data to insert
+the request must to have the following structure
+
+{
+    table_mane:str,
+    data:list[dict]
+}
