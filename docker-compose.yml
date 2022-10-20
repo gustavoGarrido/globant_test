@@ -6,19 +6,22 @@ services:
     container_name: 'etl-app'
     environment:
       - PGPORT=15432
-      - PGHOST=db
+      - PGHOST=dbglobant
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=myglobantpass
+      - PGDATABASE=postgres
+      - enviroment=dev
     depends_on:
-      - db
+      - dbglobant
     ports:
-      - 3500:3500
-      - 8080:8080
+      - 80:80
   
-  db:
+  dbglobant:
     image: postgres
     restart: on-failure
-    container_name: 'db'
+    container_name: 'dbglobant'
     environment:
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=root
       - POSTGRES_PASSWORD=myglobantpass
     command: -p 15432
     ports:

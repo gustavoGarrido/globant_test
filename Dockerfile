@@ -5,6 +5,11 @@ COPY . /app
 
 WORKDIR /app
 
+RUN pip install -r requirements.txt
+
+CMD ["uvicorn", "main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]
+
+
 # RUN rm -rf node_modules 
 
 # RUN npm install
